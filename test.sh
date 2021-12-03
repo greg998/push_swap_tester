@@ -22,6 +22,7 @@ NB_KO=0
 NB_ERROR=0
 mkdir test_files 2>/dev/null
 gcc srcs/random.c -O3
+make -C $ROOT
 
 for ((i = 1; i <= $2; i++)); do
     printf "\r$BLUE WAITING FOR tests $YELLOW $i $BLUE / $2"
