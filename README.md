@@ -9,5 +9,7 @@ OR
 bash test.sh `stack size` `number of tests` `range`
 
 all input/output files in test_files
+
 rm -rf test_files
+
 for clean
