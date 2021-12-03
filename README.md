@@ -9,6 +9,8 @@ default range is [-2147483647, 2147483647]
 OR
 
 bash test.sh `stack size` `number of tests` `range`
+ 
+-------------------------------------------------------------------------------------------
 
 all input/output files in test_files
 
