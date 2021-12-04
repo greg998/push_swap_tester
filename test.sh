@@ -1,5 +1,5 @@
 ROOT=..
-CHECKER=./checker_linux
+CHECKER=./checker
 
 BLACK="\033[1;30m"
 YELLOW="\033[1;33m"
@@ -25,12 +25,21 @@ gcc srcs/random.c -O3
 make -C $ROOT
 
 for ((i = 1; i <= $2; i++)); do
-    printf "\r$BLUE WAITING FOR tests $YELLOW $i $BLUE / $2"
+    printf "\r${BLUE}WAITING FOR tests $YELLOW $i $BLUE / $2${NOCOLOR}"
     
     ./a.out $1 $3 > test_files/$i
     IN=$(cat test_files/$i)
-    $ROOT/push_swap $IN &> test_files/o$i
-
+    if [[ $4 != "valg" ]]
+    then
+        $ROOT/push_swap $IN > test_files/o$i 2>/dev/null
+    else
+        ER=$((valgrind $ROOT/push_swap $IN > test_files/o$i) 2> >(grep "0 error"))
+        if [[ $ER == "" ]]
+        then
+            ERROR+="valgrind $i "
+            NB_ERROR=$(($NB_ERROR + 1))
+        fi
+    fi
     OUT=$(cat test_files/o$i)
     CHECKER_OUT=$(< test_files/o$i $CHECKER $IN 2>/dev/null)
 
