@@ -5,12 +5,13 @@
 
 bash test.sh `stack size` `number of tests`
 
-default range is [-2147483647, 2147483647]
+default range is [-2147483648, 2147483647]
 
 OR
 
 bash test.sh `stack size` `number of tests` `range`
 
+[-range -1, range]
 OR
  
 bash test.sh `stack size` `number of tests` `range` `valg`
