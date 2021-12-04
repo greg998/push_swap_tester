@@ -1,4 +1,4 @@
-42 push swap tester
+USAGE
 -------------------------------------------------------------------------------------------
 
 ```git clone https://github.com/greg998/push_swap_tester.git && cd push_swap_tester```
