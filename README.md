@@ -12,6 +12,7 @@ OR
 bash test.sh `stack size` `number of tests` `range`
 
 [-range -1, range]
+
 OR
  
 bash test.sh `stack size` `number of tests` `range` `valg`
