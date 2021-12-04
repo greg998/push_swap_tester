@@ -19,7 +19,7 @@ static inline int in(int *nums, int len, int val)
 int main(int argc, char **argv)
 {
     int quantity;
-    long int range;
+    long range;
     int i = 0, randomNum;
 
     quantity = atoi(argv[1]);
@@ -33,10 +33,12 @@ int main(int argc, char **argv)
     {
         randomNum = rand() % range;
         if (rand() % 2 == 1)
-            randomNum *= -1;
+            randomNum = -randomNum - 1;
         while (in(nums, i, randomNum))
         {
             randomNum = rand() % range;
+            if (rand() % 2 == 1)
+                randomNum = -randomNum - 1;
         }
         printf("%d ", randomNum);
         nums[i] = randomNum;
