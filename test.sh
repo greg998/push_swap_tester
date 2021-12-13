@@ -21,6 +21,10 @@ NB_OK=0
 NB_KO=0
 NB_ERROR=0
 mkdir test_files 2>/dev/null
+if [[ $4 == "valg" ]]
+then
+    mkdir valgrind_log 2>/dev/null
+fi
 gcc srcs/random.c -O3
 make -C $ROOT
 
@@ -33,9 +37,11 @@ for ((i = 1; i <= $2; i++)); do
     then
         $ROOT/push_swap $IN > test_files/o$i 2>/dev/null
     else
-        ER=$((valgrind $ROOT/push_swap $IN > test_files/o$i) 2> >(grep -e "in use at exit: 0" -e "0 error"))
+        ER2=$((valgrind --leak-check=full $ROOT/push_swap $IN > test_files/o$i) 2> >(cat))
+        ER=$(echo $ER2 | grep "in use at exit: 0" | grep "0 error")
         if [[ $ER == "" ]]
         then
+            echo "$ER2" | tee valgrind_log/$i
             ERROR+="valgrind $i "
             NB_ERROR=$(($NB_ERROR + 1))
         fi
