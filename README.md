@@ -17,11 +17,12 @@ OR
  
 bash test.sh `stack size` `number of tests` `range` `valg`
 
-to detect valgrind errors + 0 leak (valgrind logs save in valgrind_log folder)
+to detect valgrind errors + 0 leak
 
 CLEAN
 -------------------------------------------------------------------------------------------
 
 all input/output files in test_files
+valgrind logs save in valgrind_log folder
 
 rm -rf test_files valgrind_log
