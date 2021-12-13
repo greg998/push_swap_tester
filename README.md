@@ -17,7 +17,7 @@ OR
  
 bash test.sh `stack size` `number of tests` `range` `valg`
 
-to detect valgrind errors
+to detect valgrind errors + 0 leak
 
 CLEAN
 -------------------------------------------------------------------------------------------
