@@ -33,7 +33,7 @@ for ((i = 1; i <= $2; i++)); do
     then
         $ROOT/push_swap $IN > test_files/o$i 2>/dev/null
     else
-        ER=$((valgrind $ROOT/push_swap $IN > test_files/o$i) 2> >(grep "in use at exit: 0"))
+        ER=$((valgrind $ROOT/push_swap $IN > test_files/o$i) 2> >(grep -e "in use at exit: 0" -e "0 error"))
         if [[ $ER == "" ]]
         then
             ERROR+="valgrind $i "
